@@ -1,0 +1,32 @@
+#include <unistd.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <sys/time.h>
+
+
+typedef struct t_data
+{
+    long nbphilo;
+    long timeat;
+    long timesleep;
+    long timetodie;
+    long nbmeals;
+    int  all;
+    pthread_mutex_t		*forks;
+    pthread_mutex_t     write;
+    pthread_mutex_t     eat;
+    s_philo             *philos;
+}s_data;
+
+typedef struct t_philo
+{
+    pthread_t   thread;
+    int id;
+    long start;
+    long lastime;
+    int nb_of_meals;
+    int is_eating;
+    s_data datas;
+}s_philo;
+
